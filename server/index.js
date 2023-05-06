@@ -9,6 +9,7 @@ app.use(cors()); // Enable CORS (Cross-Origin Resource Sharing)
 app.use(express.json()); // Enable JSON parsing for request bodies
 require("dotenv").config(); // Load environment variables from a .env file if it exists
 
+
 // Define routes for the application
 
 //Welcome message route

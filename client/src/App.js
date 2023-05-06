@@ -1,23 +1,26 @@
-import React, { Fragment, useState } from "react";
-import "./App.css";
-import { BrowserRouter as Router, Link, Routes, Route } from "react-router-dom";
-import Nav from "react-bootstrap/Nav";
-import Container from "react-bootstrap/Container";
+import React, { Fragment, useState } from "react"; //groups list of children without adding extra nodes to the DOM
+import { BrowserRouter as Router, Link, Routes, Route } from 'react-router-dom'
+import Nav from 'react-bootstrap/Nav'
+import Container from 'react-bootstrap/Container'
+import './App.css';
 
-// components
+//components
 import InputTodo from "./components/InputTodo/InputTodo";
 import ListTodos from "./components/ListTodos/ListTodos";
+import About from './components/About/About'
 import Sidebar from "./components/Sidebar/Sidebar";
-import About from "./components/About/About";
 
 function Header() {
   return (
     <header>
       <Container>
-        <Nav defaultActiveKey="/" variant="tabs">
+        <Nav.Item>
+          <h1>GNCK List</h1>
+        </Nav.Item>
+        <Nav defaultActiveKey="/" variant="tabs" className="justify-content-center">
           <Nav.Item>
             <Nav.Link as={Link} to="/">
-              GNCK
+              Todo
             </Nav.Link>
           </Nav.Item>
           <Nav.Item>
