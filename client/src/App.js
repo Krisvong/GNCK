@@ -14,9 +14,6 @@ function Header() {
   return (
     <header>
       <Container>
-        <Nav.item>
-          
-        </Nav.item>
         <Nav.Item>
           <h1>GNCK List</h1>
         </Nav.Item>
