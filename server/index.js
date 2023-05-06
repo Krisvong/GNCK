@@ -14,9 +14,9 @@ require("dotenv").config(); // Load environment variables from a .env file if it
 app.use(express.static(path.resolve(__dirname, '..', 'client/build')))
 
 //Welcome message route
-app.get("/", (req, res) => {
-  res.send("Welcome to our Todo API, where you can procrastinate in style!");
-});
+// app.get("/", (req, res) => {
+//   res.send("Welcome to our Todo API, where you can procrastinate in style!");
+// });
 
 // Route to CREATE a new todo
 // To test in POSTMAN: POST http://localhost:5001/todos/ (in the body raw JSON: { "description": "Create a TODO API", "due_date": "2023-05-01" })
