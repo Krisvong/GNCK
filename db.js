@@ -7,10 +7,12 @@ require('dotenv').config();
 // A pool is a collection of reusable database connections that can be shared across multiple requests, allowing for more efficient and scalable database interactions
 const { Pool } = require('pg');
 
+const proConfig = {
+  connectionString: process.env.DATABASE_URL //vercel integration
+}
 // Create a new Pool object using the PG_URI environment variable.
-const pool = new Pool({
-  connectionString: process.env.PG_URI,
-});
+const pool = new Pool(process.env.NODE_ENV === "production" ? proConfig : {connectionString: process.env.PG_URI});
+
 
 // Export the pool object so it can be used by other modules.
 module.exports = pool;

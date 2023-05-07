@@ -3,11 +3,24 @@ const express = require("express");
 const app = express();
 const cors = require("cors");
 const pool = require("./db.js"); // Import the database connection pool from db.js
+const path = require("path")
+const PORT = process.env.PORT || 5001
+
+//process.env.PORT
+//process.env.NODE_ENV => production or undefined
 
 // Set up middleware
 app.use(cors()); // Enable CORS (Cross-Origin Resource Sharing)
 app.use(express.json()); // Enable JSON parsing for request bodies
 require("dotenv").config(); // Load environment variables from a .env file if it exists
+
+if(process.env.NODE_ENV === "production") {
+  //server static content
+  //npm run build
+  app.use(express.static(path.join(__dirname, "client/build")));
+}
+console.log(__dirname);
+console.log(path.join(__dirname, "client/build"));
 
 
 // Define routes for the application
