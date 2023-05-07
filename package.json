@@ -3,6 +3,10 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
+  "engines": {
+    "node": "18.x",
+    "npm": "9.6.4"
+  },
   "scripts": {
     "start": "node index.js",
     "build": "npm run build-client && npm run build-server",

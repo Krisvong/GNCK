@@ -231,8 +231,12 @@ app.delete("/completed_todos/:id", async (req, res) => {
   }
 });
 
-app.listen(process.env.PORT, () => {
+app.get("*", (req, res) => {
+  res.sendFile(path.join(__dirname, "client/build/index.html"));
+});
+
+app.listen(PORT, () => {
   console.log(
-    `Making a todo list on port: ${process.env.PORT} with the ALLSTARS Casey, Nick, Gregg, and Kristen`
+    `Making a todo list on port: ${PORT} with the ALLSTARS Casey, Nick, Gregg, and Kristen`
   );
 });

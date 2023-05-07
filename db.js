@@ -1,18 +1,23 @@
 // This file sets up a PostgreSQL database connection pool using the 'pg' library.
 
-// Load environment variables from a .env file if it exists.
-require('dotenv').config();
+const Pool = require("pg").Pool;
+require("dotenv").config();
 
-// Import the Pool class from the 'pg' library.
-// A pool is a collection of reusable database connections that can be shared across multiple requests, allowing for more efficient and scalable database interactions
-const { Pool } = require('pg');
+// const devConfig = {
+//   user: process.env.PG_USER,
+//   password: process.env.PG_PASSWORD,
+//   host: process.env.PG_HOST,
+//   database: process.env.PG_DATABASE,
+//   port: process.env.PG_PORT,
+// };
 
-const proConfig = {
-  connectionString: process.env.DATABASE_URL //vercel integration
-}
-// Create a new Pool object using the PG_URI environment variable.
-const pool = new Pool(process.env.NODE_ENV === "production" ? proConfig : {connectionString: process.env.PG_URI});
+const devConfig = `postgresql://${process.env.PG_USER}:${process.env.PG_PASSWORD}@${process.env.PG_HOST}:${process.env.PG_PORT}/${process.env.PG_DATABASE}`;
 
+const proConfig = process.env.DATABASE_URL; //heroku addons
 
-// Export the pool object so it can be used by other modules.
+const pool = new Pool({
+  connectionString:
+    process.env.NODE_ENV === "production" ? proConfig : devConfig,
+});
+
 module.exports = pool;
